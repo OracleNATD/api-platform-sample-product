@@ -1,0 +1,81 @@
+FORMAT: 1A
+HOST: http://retail.oracle.org/
+
+# Product API
+
+Allows clients to query for product information. Clients can decide if they want 
+to receive all the details for the particular product or just the summary. 
+
+## Products [/products]
+
+### Get All Products [GET]
+Returns all products information
+
++ Response 200 (application/json)
+
+        [
+            {
+                "item": "1000",
+                "name": "Samsung 27 inches Widescreen LED Monitor, Black",
+                "price": "189.99",
+            },
+            {
+                "item": "2000",
+                "name": "HP LaserJet Pro M402dn Monochrome Laser Printer",
+                "price": "199.99",
+            },
+            {
+                "item": "3000",
+                "name": "Logitech® K350 Wireless Keyboard, Black",
+                "price": "61.99",
+            }
+        ]
+
+## Product Details [/product/details/{item}]
+
+### Get product details [GET]
+Returns all details for a specific product
+
++ Parameters
+    + item (number) - Product item number.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "item":"1000",
+                "name": "Samsung 27 inches Widescreen LED Monitor, Black",
+                "Manufacturer": "Samsung",
+                "model": "S27E310HS",
+                "screen type": "LED",
+                "price": "189.99",
+                "diagonal screen size": "27 inches",
+                "dimensions:": "25.33 H x 18.23 W x 7.90 D",
+                "native resolution": "1920 x 1080",
+                "contrast ratio": "1,000:1",
+                "signal input type": "D-Sub 1",
+                "typical response time": "1 ms",
+                "aspect ratio": "16:9",
+                "Horizontal Viewing Angle": "170/160 degrees"
+            }
+        ]
+
+
+## Product Summary [/product/summary/{item}]
+
+### Get product Summary [GET]
+Returns only a summary of the product (name, price and summary).
+
++ Parameters
+    + item (number) - Product item number.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "item": "1000",
+                "name": "Samsung S27E310H 27” Widescreen LED Monitor, Black",
+                "price":"189.99",
+                "summary": "Games, movies, Web surfing and viewing photos are all more fun with a crystal clear screen."
+            }
+        ]
